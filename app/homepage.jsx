@@ -13,12 +13,14 @@ const Page = () => {
   
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('loggedInUser');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    if (typeof window !== "undefined") {
+      const storedUser = localStorage.getItem('loggedInUser');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
     }
   }, []);
-
+  
   const handleLogout = () => {
     localStorage.removeItem('loggedInUser');
     setUser(null); 
